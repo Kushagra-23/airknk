@@ -27,8 +27,6 @@ export const ProfilePage = () => {
     return <Navigate to={"/login"} />;
   }
 
-  
-
   if (redirect) {
     return <Navigate to={redirect} />;
   }
