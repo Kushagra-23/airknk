@@ -66,33 +66,8 @@ Navigate to the frontend directory and run:
 npm run dev
 ```
 
-**Open your browser and go to**:
+**Open your browser and go to**: http://localhost:3000
 
-
-http://localhost:3000
-Folder Structure
-plaintext
-Copy code
-airknk/
-│
-├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── index.js
-│   └── .env (not included in the repo)
-│
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.js
-│   │   ├── index.js
-│   └── package.json
-│
-└── README.md
 Contributing
 Feel free to submit issues, fork the repository, and send pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
