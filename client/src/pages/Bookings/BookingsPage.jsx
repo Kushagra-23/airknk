@@ -1,28 +1,35 @@
 import { Children, useEffect, useState } from "react";
-import { AccountNav } from "../AccountNav";
-import axios from "axios";
-import { PlaceImg } from "../PlaceImg";
-import { differenceInCalendarDays, format } from "date-fns";
 import { Link } from "react-router-dom";
-import { BookingDates } from "../BookingDates";
+import axios from "axios";
+import { AccountNav } from "../../components/AccountNav";
+import { PlaceImg } from "../../components/PlaceImg";
+import { BookingDates } from "../../components/BookingDates";
 
 export const BookingsPage = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get("/bookings").then((response) => {
-      setBookings(response.data);
-    });
+    axios
+      .get("/bookings")
+      .then((response) => {
+        setBookings(response.data);
+      })
+      .catch((error) => {
+        throw error;
+      });
   }, []);
 
   return (
     <div>
       <AccountNav />
       <div>
-        {bookings?.length > 0 &&
+        {bookings?.length > 0 ? (
           Children.toArray(
             bookings.map((booking) => (
-              <Link to={`/account/bookings/${booking._id}`} className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden">
+              <Link
+                to={`/account/bookings/${booking._id}`}
+                className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden"
+              >
                 <div className="w-48">
                   <PlaceImg place={booking.place} />
                 </div>
@@ -30,7 +37,10 @@ export const BookingsPage = () => {
                   <h2 className="text-xl">{booking.place.title}</h2>
                   <div className="text-xl">
                     {" "}
-                    <BookingDates booking={booking} className={' mb-2 mt-4 text-gray-500'}/>
+                    <BookingDates
+                      booking={booking}
+                      className={" mb-2 mt-4 text-gray-500"}
+                    />
                     <div className="flex gap-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +64,12 @@ export const BookingsPage = () => {
                 </div>
               </Link>
             ))
-          )}
+          )
+        ) : (
+          <div className="flex justify-center items-center text-4xl mt-40">
+            No bookings available. Please book a place😊
+          </div>
+        )}
       </div>
     </div>
   );

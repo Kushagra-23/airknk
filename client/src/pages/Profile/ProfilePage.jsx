@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../utils/UserContext";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { PlacesPage } from "./PlacesPage";
-import { AccountNav } from "../AccountNav";
+import { PlacesPage } from "../Places/PlacesPage";
+import { AccountNav } from "../../components/AccountNav";
 
 export const ProfilePage = () => {
   const [redirect, setRedirect] = useState(null);
@@ -33,7 +33,7 @@ export const ProfilePage = () => {
 
   return (
     <div>
-      <AccountNav/>
+      <AccountNav />
       {subpage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
           Logged in as {user.name} ({user.email})<br />

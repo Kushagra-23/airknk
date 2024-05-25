@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { PhotoUploader } from "../PhotoUploader";
+import { PhotoUploader } from "../../components/PhotoUploader";
 import axios from "axios";
-import { Perks } from "../Perks";
-import { AccountNav } from "../AccountNav";
+import { Perks } from "../../components/Perks";
+import { AccountNav } from "../../components/AccountNav";
 import { Navigate, useParams } from "react-router-dom";
 
 export const PlacesFormPage = () => {
@@ -59,20 +59,20 @@ export const PlacesFormPage = () => {
     e.preventDefault();
     const placeData = {
       title,
-        address,
-        addedPhotos,
-        description,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
-        price
-    }
-    if(id) {
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+      price,
+    };
+    if (id) {
       await axios.put("/places", {
         id,
-        ...placeData
+        ...placeData,
       });
       setRedirect(true);
     } else {

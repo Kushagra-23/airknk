@@ -6,19 +6,25 @@ export const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const registerUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/register' ,{
+      await axios.post("/register", {
         name,
         email,
-        password
+        password,
       });
-      alert('Registration successful. Now you can log in')
+      console.log("Registration successful. Now you can log in");
+      setRedirect(true);
     } catch (error) {
-      alert('Registration falied. Please try again later')
+      console.log("Registration falied. Please try again later");
     }
+  };
+
+  if (redirect) {
+    return <Navigate to={"/login"} />;
   }
 
   return (

@@ -1,23 +1,19 @@
-import "./App.css";
-import {Route, Routes} from "react-router-dom";
-import IndexPage from "./pages/IndexPage";
-import { LoginPage } from "./pages/LoginPage";
-import { Layout } from "./Layout";
-import { RegisterPage } from "./pages/RegisterPage";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { UserContextProvider } from "./UserContext";
-import { ProfilePage } from "./pages/ProfilePage";
-import { PlacesPage } from "./pages/PlacesPage";
-import { PlacesFormPage } from "./pages/PlacesFormPage";
-import { PlacePage } from "./pages/PlacePage";
-import { BookingsPage } from "./pages/BookingsPage";
-import { BookingPage } from "./pages/BookingPage";
+import IndexPage from "./pages/Home/IndexPage";
+import { Layout } from "./components/Layout";
+import { UserContextProvider } from "./utils/UserContext";
+import { ProfilePage } from "./pages/Profile/ProfilePage";
+import { PlacesPage } from "./pages/Places/PlacesPage";
+import { PlacesFormPage } from "./pages/Places/PlacesFormPage";
+import { PlacePage } from "./pages/Places/PlacePage";
+import { BookingsPage, BookingPage } from "./pages/Bookings/index";
+import { LoginPage, RegisterPage } from "./pages/Authentication/index";
 
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
 
 function App() {
-  
   return (
     <UserContextProvider>
       <Routes>

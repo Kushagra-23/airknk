@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../utils/UserContext";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,20 +14,20 @@ export const LoginPage = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/login' ,{
+      const { data } = await axios.post("/login", {
         email,
-        password
+        password,
       });
       setUser(data);
-      alert('Login successful')
+      console.log("Login successful");
       setRedirect(true);
     } catch (error) {
-      alert('Login falied')
+      console.log("Login falied");
     }
   };
 
-  if(redirect) {
-    return <Navigate to={'/'} />
+  if (redirect) {
+    return <Navigate to={"/account/bookings"} />;
   }
 
   return (

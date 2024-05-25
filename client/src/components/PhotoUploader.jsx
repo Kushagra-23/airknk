@@ -1,19 +1,20 @@
 import axios from "axios";
 import { Children, useState } from "react";
 
-// eslint-disable-next-line react/prop-types
 export const PhotoUploader = ({ addedPhotos, onChange }) => {
   const [photoLink, setPhotoLink] = useState("");
 
   const addPhotoByLink = async (e) => {
     e.preventDefault();
-    const { data: filename } = await axios.post("/upload-by-link", {
-      link: photoLink,
-    });
-    onChange((prev) => {
-      return [...prev, filename];
-    });
-    setPhotoLink("");
+    if (photoLink) {
+      const { data: filename } = await axios.post("/upload-by-link", {
+        link: photoLink,
+      });
+      onChange((prev) => {
+        return [...prev, filename];
+      });
+      setPhotoLink("");
+    }
   };
 
   const uploadPhoto = (e) => {
@@ -62,7 +63,6 @@ export const PhotoUploader = ({ addedPhotos, onChange }) => {
       </div>
       <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {Children.toArray(
-          // eslint-disable-next-line react/prop-types
           addedPhotos?.length > 0 &&
             addedPhotos?.map((link) => (
               <div className="h-32 flex relative">
