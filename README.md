@@ -27,42 +27,44 @@ cd airknk
 **Install dependencies for the frontend and backend:**
 
 # Install frontend dependencies
-``
+
+```
 cd frontend
 npm install
-``
+```
 
 # Install backend dependencies
-``
+
+```
 cd ../backend
 npm install
-``
+```
 
 **Set up environment variables:**
 
 Create a .env file in the backend directory and add the following variables:
 
-``
+```
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-``
+```
 
 **Running the Application
 Start the backend server**:
 
 Navigate to the backend directory and run:
 
-``
+```
 nodemon index.js
-``
+```
 
 **Start the frontend development server:**
 
 Navigate to the frontend directory and run:
 
-``
+```
 npm run dev
-``
+```
 
 **Open your browser and go to**:
 
